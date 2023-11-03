@@ -3216,6 +3216,10 @@ input, select, textarea {
 			z-index: -1;
 		}
 
+		#wrapper a.colour-light {
+			color: #ffffff;
+		}
+
 		#wrapper section {
 			display: grid;
 			grid-template-areas: "header content" "footer content";
