@@ -2673,7 +2673,7 @@ input, select, textarea {
 			}
 
 		#wrapper .copyright {
-			color: rgba(0, 0, 0, 0.25);
+			color: rgb(255, 0, 0);
 			font-size: 1rem;
 			left: 50vw;
 			position: relative;
