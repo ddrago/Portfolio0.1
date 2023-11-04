@@ -3215,9 +3215,26 @@ input, select, textarea {
 			width: 50vw;
 			z-index: -1;
 		}
-
+		
 		#wrapper a.colour-light {
 			color: #ffffff;
+		}
+
+		@media screen and (max-width: 1152px) {
+
+			
+			#wrapper a.colour-light {
+				color: #000000;
+			}
+
+			.gallery a.landscape img {
+				height: 12rem;
+			}
+
+			.gallery a.portrait img {
+				height: 14rem;
+			}
+
 		}
 
 		#wrapper section {
