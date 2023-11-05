@@ -2534,6 +2534,14 @@ input, select, textarea {
 			width: 50vw;
 			z-index: -1;
 		}
+		
+		#wrapper a.colour-light{
+			color: #ffffff;
+		}
+		
+		#wrapper p.colour-light{
+			color: #ffffff;
+		}
 
 		#wrapper section {
 			display: grid;
