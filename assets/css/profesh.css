@@ -2881,11 +2881,18 @@ input, select, textarea {
 					#wrapper section > footer {
 						padding: 0;
 						text-align: left;
+						color: #000000;
 					}
 
 						#wrapper section > footer ul.actions {
 							justify-content: flex-start;
 						}
+
+					#wrapper section > footer a {
+						padding: 0;
+						text-align: left;
+						color: #000000;
+					}
 
 				#wrapper > section {
 					margin: 0;
