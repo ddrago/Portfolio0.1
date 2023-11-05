@@ -7,12 +7,6 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-:root {
-    --title-colour: #ff5733; /* Define a custom color variable */
-    --wrapper-colour: #ff5733; /* Define a custom color variable */
-    --background-colour: #ff5733; /* Define a custom color variable */
-}
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -193,7 +187,7 @@ input, select, textarea {
 
 	strong, b {
 		font-weight: 600;
-		color: #def4e5;
+		color: #7dd6b0;
 	}
 
 	em, i {
@@ -252,6 +246,12 @@ input, select, textarea {
 	h6 {
 		color: #ffffff;
 		font-size: 0.625rem;
+	}
+	
+	@media screen and (max-width: 1152px) {
+		h3 {
+			color: #7dd6b0;
+		}
 	}
 
 	@media screen and (max-width: 736px) {
@@ -2535,7 +2535,7 @@ input, select, textarea {
 			z-index: -1;
 		}
 		
-		#wrapper a.colour-light{
+		#wrapper a{
 			color: #ffffff;
 		}
 		
@@ -2735,6 +2735,7 @@ input, select, textarea {
 
 			#wrapper > section > .content > section > header {
 				width: 32rem;
+				color: #ffffff;
 			}
 
 		#wrapper > section.intro > header > * {
@@ -2933,6 +2934,7 @@ input, select, textarea {
 
 						#wrapper > section > .content > section > header {
 							width: 100%;
+							color: #000000;
 						}
 
 						#wrapper > section > .content > section:last-child {
