@@ -2,7 +2,10 @@ let raindropsNumber = 1000;
 const rd = [];
 
 function setup() {
-  let canvas = createCanvas(1000, 500);
+  let canvas = createCanvas(
+    window.innerWidth/2, 
+    window.innerHeight
+    );
   canvas.parent('sketch-container');
   for (let i = 0; i < raindropsNumber; i++) {
     rd[i] = new RainDrop();
