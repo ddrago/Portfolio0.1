@@ -63,9 +63,10 @@ function draw(){
 
 function drawBackground(seethrough) {
     if (seethrough) {
-        background(`rgba(${colorBank[0][0]}, ${colorBank[0][1]}, ${colorBank[0][2]}, ${opacity})`);
+        let backgroundColor = color(red(colorBank[0]), green(colorBank[0]), blue(colorBank[0]), opacity);
+        background(backgroundColor);
     } else {
-        background(`rgb(${colorBank[0][0]}, ${colorBank[0][1]}, ${colorBank[0][2]})`);
+        background(colorBank[0]);
     }
     // canvasContext.fillRect(0, 0, canvas.width, canvas.height);
 }
