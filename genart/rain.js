@@ -1,11 +1,21 @@
 let raindropsNumber = 1000;
 const rd = [];
+let canvas;
 
 function setup() {
-  let canvas = createCanvas(
-    window.innerWidth/2, 
-    window.innerHeight
-    );
+  if (window.innerWidth < 1152) {
+    canvas = createCanvas(
+      window.innerWidth, 
+      window.innerHeight
+      );
+  }
+  else {
+    canvas = createCanvas(
+      window.innerWidth/2, 
+      window.innerHeight
+      );
+  }
+
   canvas.parent('sketch-container');
   for (let i = 0; i < raindropsNumber; i++) {
     rd[i] = new RainDrop();
@@ -18,6 +28,24 @@ function draw() {
     rd[i].display();
     rd[i].update();
   }
+}
+
+function windowResized() {
+  if (window.innerWidth < 1152) {
+    document.getElementById("demo").innerHTML = "1";
+    resizeCanvas(
+      window.innerWidth*2, 
+      window.innerHeight
+      );
+  }
+  else {
+    document.getElementById("demo").innerHTML = "2";
+    resizeCanvas(
+      window.innerWidth/2, 
+      window.innerHeight
+      );
+  }
+
 }
 
 class RainDrop {
