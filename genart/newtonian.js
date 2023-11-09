@@ -1,5 +1,5 @@
 //COSTANTS 
-const imageFrameBuffer = 100; //buffer space from window edge
+const imageFrameBuffer = 75; //buffer space from window edge
 let G;
 const maxInitVelocity = 1; //maximum initial speed of each planet
 const minmass = 5;
@@ -17,9 +17,9 @@ let bodiesNumber; //number of planets
 
 function setup(){
     // contstants
-    G = -random() * (1 - 0.5) + 0.5;
-    opacity = random() * (10 - 2) + 2;
-    bodiesNumber = floor(random() * (maxBodiesNumber - minBodiesNumber + 1)) + minBodiesNumber;
+    G = -random(0.5, 1);
+    opacity = random(2, 10);
+    bodiesNumber = floor(random(minBodiesNumber, maxBodiesNumber));
 
     generateColours();
 
@@ -46,7 +46,7 @@ function setup(){
 function draw(){
     drawBackground(true);  //draw a background with a slight transparency to it
     push();
-    translate(-system.centerOfMass().x+width/2, -system.centerOfMass().y+height/2);  //translate center of the canvas such that 
+    translate(width/2-system.centerOfMass().x, height/2-system.centerOfMass().y);  //translate center of the canvas such that 
     //the center of mass is at the center
     system.update();  
     pop();
@@ -177,9 +177,11 @@ class System{
 
         for (let i = 0; i < n; i++){
             const mass = random(minmass, maxmass);
+            print(imageFrameBuffer - width/2)
+            print(width/2 - imageFrameBuffer)
             const position = createVector(
-                random(-width/2 + imageFrameBuffer, width/2 - imageFrameBuffer),
-                random(-height/2 + imageFrameBuffer, height/2 - imageFrameBuffer));
+                random(imageFrameBuffer - width/2, width/2 - imageFrameBuffer),
+                random(imageFrameBuffer - height/2, height/2 - imageFrameBuffer));
             const velocity = createVector(
                 random(-maxInitVelocity, maxInitVelocity), 
                 random(-maxInitVelocity, maxInitVelocity));
