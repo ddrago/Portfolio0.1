@@ -1,5 +1,5 @@
 //COSTANTS 
-const imageFrameBuffer = 75; //buffer space from window edge
+const imageFrameBuffer = 5; //buffer space from window edge
 let G;
 const maxInitVelocity = 1; //maximum initial speed of each planet
 const minmass = 5;
@@ -7,18 +7,27 @@ const maxmass = 10;
 
 let newtonianCanvas;
 
-let opacity;
+let opacity = 2;
 let colorBank = new Array(3); //maybe it should be let, not const
 let minBodiesNumber = 2;
-let maxBodiesNumber = 8;
+let maxBodiesNumber = 6;
+let windowWidth;
+let windowHeight;
 
 let system;
+let maximumSystemSize = 500;
 let bodiesNumber; //number of planets
+
+// TODO
+// It would be cool if the system reacted to the mouse being close to the planets. 
+// So if the mouse hovers over the canvas, the planets are also react to its gravity! Which maybe could be "heavier". 
+
+// TODO
+// Every time a user presses the right button on the mouse while over the art or touches the art on a touchscreen the animation should re-start. 
 
 function setup(){
     // contstants
     G = -random(0.5, 1);
-    opacity = random(2, 10);
     bodiesNumber = floor(random(minBodiesNumber, maxBodiesNumber));
 
     generateColours();
@@ -27,16 +36,20 @@ function setup(){
     system = new System(bodiesNumber);
 
     if (window.innerWidth < 1152) {
-    rainCanvas = createCanvas(
-        window.innerWidth, 
-        window.innerHeight
-        );
+        rainCanvas = createCanvas(
+            window.innerWidth, 
+            window.innerHeight
+            );
+        windowWidth = window.innerWidth;
+        windowHeight = window.innerHeight
     }
     else {
     rainCanvas = createCanvas(
         window.innerWidth/2, 
         window.innerHeight
         );
+        windowWidth = window.innerWidth/2;
+        windowHeight = window.innerHeight
     }
 
     rainCanvas.parent('newtonian-container');
@@ -46,7 +59,7 @@ function setup(){
 function draw(){
     drawBackground(true);  //draw a background with a slight transparency to it
     push();
-    translate(width/2-system.centerOfMass().x, height/2-system.centerOfMass().y);  //translate center of the canvas such that 
+    translate(windowWidth/2-system.centerOfMass().x, windowHeight/2-system.centerOfMass().y);  //translate center of the canvas such that 
     //the center of mass is at the center
     system.update();  
     pop();
@@ -68,7 +81,7 @@ function drawBackground(seethrough) {
     } else {
         background(colorBank[0]);
     }
-    // canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    // canvasContext.fillRect(0, 0, canvas.windowWidth, canvas.windowHeight);
 }
 
 function randomAssign(colorBank, color1, color2, color3){
@@ -111,9 +124,9 @@ function randomAssign(colorBank, color1, color2, color3){
 }
 
 function generateColours(){
-    let colour1 = color(random(230, 255), random(50, 150), random(50, 150)); //random(100, 255), random(100, 255), random(100, 255)};
-    let colour2 = color(random(230, 255), random(230, 255), random(20, 50)); //colour1[1], colour1[2], colour1[0]};
-    let colour3 = color(random(20, 50), random(150, 220), random(230, 255)); //colour1[2], colour1[0], colour1[1]};
+    let colour1 = color(27,200,254); //random(100, 255), random(100, 255), random(100, 255)};
+    let colour2 = color(246,102,122); //colour1[1], colour1[2], colour1[0]};
+    let colour3 = color(245,232,57); //colour1[2], colour1[0], colour1[1]};
     
     randomAssign(colorBank, colour1, colour2, colour3);
 }
@@ -173,15 +186,13 @@ class System{
     
     constructor(n){
         this.bodies = new Array(n);
-        const size = 70;
+        const size = 100;
 
         for (let i = 0; i < n; i++){
             const mass = random(minmass, maxmass);
-            print(imageFrameBuffer - width/2)
-            print(width/2 - imageFrameBuffer)
             const position = createVector(
-                random(imageFrameBuffer - width/2, width/2 - imageFrameBuffer),
-                random(imageFrameBuffer - height/2, height/2 - imageFrameBuffer));
+                random(0, maximumSystemSize),
+                random(0, maximumSystemSize));
             const velocity = createVector(
                 random(-maxInitVelocity, maxInitVelocity), 
                 random(-maxInitVelocity, maxInitVelocity));

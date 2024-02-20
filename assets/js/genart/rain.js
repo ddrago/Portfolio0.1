@@ -2,6 +2,11 @@ let raindropsNumber = 1000;
 const rd = [];
 let rainCanvas;
 
+// TODO
+// Every time a user presses the right button on the mouse while over the art, or touches the art on a touchscreen, 
+// the animation should re-start with the rain being a different color. 
+
+
 function setup() {
   if (window.innerWidth < 1152) {
     rainCanvas = createCanvas(
